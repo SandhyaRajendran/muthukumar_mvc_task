@@ -1,4 +1,7 @@
 <?php
+require 'mvc/views/user/homePage.php';
+
+require_once  'User';
 class UserController {
     private $userModel;
 
@@ -8,6 +11,16 @@ class UserController {
 
     public function create() {
         // Handle form submission for creating a new user
+
+        if(isset($_POST['userName']) && isset($_FILES['profileImage'])){
+            $userName = $_POST['userName'];
+            $uploadedImage = $_FILES['profileImage']['name'];
+
+
+            $filePath = 'imgStorage/'.$uploadedImage;
+
+            move_uploaded_file($_FILES['profileImage']['tmp_name'],$filePath);
+        }
     }
 
     public function edit($id) {

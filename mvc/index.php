@@ -1,10 +1,12 @@
 <?php
 require_once 'controllers/UserController.php';
 
+require 'views/user/homePage.php';
+
 $controller = new UserController();
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+if (isset($_POST['name'])) {
+    $action = $_POST['name'];
 
     switch ($action) {
         case 'create':
